@@ -1,22 +1,20 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
-import menuIcon from "./menu_icon.svg";
 
 function App() {
   return (
     <div className="app_container">
-      <div className="site_header">
-        <div className="logo">
-          E.
+        <div className="header">
+          <span className="logo">Ekas Preet Singh.</span>
         </div>
-        <div className="site_menu">
-          <img src={menuIcon} alt="menu" />
+        <div className="main_container">
+
         </div>
-      </div>
-      <div className="headings">
-        
-      </div>
+        <div className="footer">
+
+        </div>
+      
     </div>
   );
 }
