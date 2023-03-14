@@ -1,26 +1,29 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useRef, useEffect, MutableRefObject } from "react";
+import WebViewer from "@pdftron/webviewer";
 import "./App.css";
 
-function App() {
+const App = () => {
+  const viewer = useRef(null) as unknown as MutableRefObject<HTMLDivElement>;
+
+  // if using a class, equivalent of componentDidMount
+  useEffect(() => {
+    WebViewer(
+      {
+        path: "/lib",
+        initialDoc: "/files/PDFTRON_about.pdf",
+      },
+      viewer.current
+    ).then((instance) => {
+      const { documentViewer, annotationManager, Annotations } = instance.Core;
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">React sample</div>
+      <div className="webviewer" ref={viewer}></div>
     </div>
   );
-}
+};
 
 export default App;
